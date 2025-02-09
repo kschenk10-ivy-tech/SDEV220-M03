@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Application for Bath &amp; Body Works Customers</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<p>Khristin Schenk<br>
+February 9th, 2025<br>
+Module 3 Final Project Launch<br>
+SDEV220, Fall 2025</p>
+</blockquote>
+<h1 id="python-application-for-bath--body-works-customers">Python Application for Bath &amp; Body Works Customers</h1>
+<p><em>This Python application is designed specifically for Bath &amp; Body Works customers, enabling users to log and track their favorite candles by year and season. Customers can create a shopping list linked to their birthdays, holidays, and special occasions, all organized by week, day, and year. The details included are name (last, first), month, day, and year.</em></p>
+<hr>
+<h3 id="core-functionalities-of-the-command-line-program">Core Functionalities of the Command-Line Program:</h3>
+<ol>
+<li>Add candles to a personal collection.</li>
+<li>Organize candle inventories by year and season.</li>
+<li>Designate statuses such as “SHOPPING LIST,” “I Have Not Smelled,” “I Like This One,” and more.</li>
+<li>Save and retrieve data using a file format like JSON.</li>
+</ol>
+<h2 id="year-and-month-organization">Year and Month Organization:</h2>
+<ul>
+<li>
+<p><strong>2025:</strong> JANUARY, FEBRUARY, MARCH, APRIL, …and so on.</p>
+</li>
+<li>
+<p><strong>2024:</strong> JANUARY, FEBRUARY, MARCH, APRIL, …and so on.</p>
+</li>
+<li>
+<p><strong>2023:</strong> JANUARY, FEBRUARY, MARCH, APRIL, …and so on.</p>
+</li>
+</ul>
+<h2 id="data-management">Data Management:</h2>
+<p>Saved information may include:</p>
+<ul>
+<li>
+<p>Shopping list options (Drafts, Final, Last Year, This Year, All Time)</p>
+</li>
+<li>
+<p>Status options (CREATE SHOPPING LIST, IMPORT SHOPPING LIST, SAVE/EDIT, UPDATE, BIRTHDAY HISTORY BY YEAR)</p>
+</li>
+</ul>
+<h2 id="user-prompts">User Prompts:</h2>
+<ul>
+<li>
+<p>Create a shopping list.</p>
+</li>
+<li>
+<p>Open my list(s) (dropdown for available years).</p>
+</li>
+</ul>
+<h3 id="updating-information">Updating Information:</h3>
+<ul>
+<li>
+<p>Confirm updates before exiting.</p>
+</li>
+<li>
+<p>Prompt users to save changes.</p>
+</li>
+</ul>
+<h3 id="birthday-computation">Birthday Computation:</h3>
+<p>To calculate age within the program, use the following formulas:</p>
+<ul>
+<li>
+<p>Years: <code>=DATEDIF(A1, TODAY(), “Y”)</code></p>
+</li>
+<li>
+<p>Months since last birthday: <code>=DATEDIF(A1, TODAY(), “YM”)</code></p>
+</li>
+<li>
+<p>Days until next birthday: <code>=DATEDIF(A1, TODAY(), “MD”)</code></p>
+</li>
+<li>
+<p>Combine results: <code>=CONCAT(A2, " years, ", A3, " months, ", A4, " days ")</code></p>
+</li>
+</ul>
+<blockquote>
+<p><strong>NOTE:</strong> TO-DO!<br>
+<em>Make an excel file that includes a column with formulas for the  Birthday Computation feature</em></p>
+</blockquote>
+<h3 id="monthly-breakdown">Monthly Breakdown:</h3>
+<ul>
+<li>2025 | JANUARY (YEAR | MONTH)</li>
+<li>DAY (01-31)</li>
+<li>NAME (Last, First) / (First, Last)</li>
+<li>AGE THIS YEAR</li>
+</ul>
+<h3 id="user-prompts-for-editing">User Prompts for Editing:</h3>
+<ul>
+<li>Create a shopping list.</li>
+<li>Edit shopping list.</li>
+<li>Export or share shopping list.</li>
+<li>Send notifications to phone or email.</li>
+</ul>
+<h3 id="inspiration-for-the-project">Inspiration for the Project:</h3>
+<p>The concept is inspired by a 3-inch binder used to store greeting cards, postcards, photographs, notes, artwork, and other personal items. These items are organized into sections based on the month they need to be sent or given. The binder includes tabbed dividers for each month of the year and has an introductory page for each section indicating the month and year. A basic table lists names and corresponding birthdays for each individual, arranged in alphabetical order and then sorted by the days of the month. Following pages for each month contain clear vellum envelopes to keep cards intended for specific individuals throughout the year, ensuring that cards are prepared in advance. This system combines elements of a calendar, reminder service (with push notifications, emails, texts, etc.), and a gift list organizer, organized by year, scent, collection, season, person, month, day, event, and more.</p>
+<hr>
+<h3 id="binder-title">Binder Title:</h3>
+<p>Year</p>
+<h3 id="binder-dividers">Binder Dividers:</h3>
+<p>Month</p>
+<h3 id="table-columns">Table Columns:</h3>
+<ul>
+<li>List of Days (01, 02, 03, …, 28, …, 31, etc.)</li>
+<li>Status (No Information Saved, View/Edit Notes, Plans, etc.)</li>
+<li>View/Edit Shopping/Wish Lists</li>
+<li>View/Edit Contacts</li>
+<li>List of Names (First, Last) or (Last, First)</li>
+<li>Names and Ages for the Current Year.</li>
+</ul>
+<h3 id="functions">Functions:</h3>
+<ul>
+<li>Create, edit, or view:
+<ul>
+<li>Gift List</li>
+<li>Shopping List (This Year, Last Year, All, etc.)</li>
+<li>Set reminders (Yes/No)</li>
+</ul>
+</li>
+</ul>
+</div>
+</body>
+
+</html>

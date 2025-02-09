@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>json notes</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="bath--body-works-fragrance-organizer">Bath &amp; Body Works Fragrance Organizer</h1>
+<!--&#10;![Project Inspiration](https://via.placeholder.com/800x200.png?text=Digital+Fragrance+Organizer)  _Replace with actual screenshot_&#10;-->
+<h2 id="🌟-features">🌟 Features</h2>
+<h3 id="core-capabilities"><strong>Core Capabilities</strong></h3>
+<ul>
+<li>
+<p><strong>Fragrance Tracker</strong><br>
+Catalog scents by year/season with custom statuses:<br>
+<code>Favorite</code>,  <code>I Like This One</code>,  <code>Wishlist</code>,  <code>Not Smelled</code></p>
+</li>
+<li>
+<p><strong>Smart Shopping Lists</strong><br>
+Create lists for birthdays, holidays, or events with:</p>
+<ul>
+<li>
+<p>Status tracking (<code>Draft</code>,  <code>Final</code>,  <code>Last Year</code>,  <code>This Year</code>)</p>
+</li>
+<li>
+<p>Auto-save/load via JSON</p>
+</li>
+<li>
+<p>Sharing/export options</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Birthday Integration</strong><br>
+<em>Coming Soon: Age calculations and gift reminders</em></p>
+</li>
+</ul>
+<h3 id="data-management"><strong>Data Management</strong></h3>
+<ul>
+<li>
+<p><strong>Structured Storage</strong></p>
+<p>json</p>
+<p>Copy</p>
+<p>{<br>
+“2025”: {<br>
+“Spring”: {<br>
+“Palo Santo &amp; Sage”: “Favorite”,<br>
+“Paris Café”: “Wishlist”<br>
+}<br>
+},<br>
+“shopping_lists”: {<br>
+“Birthday”: [“Palo Santo &amp; Sage”, “White Tea &amp; Sage”]<br>
+}<br>
+}</p>
+</li>
+<li>
+<p><strong>Automatic Organization</strong><br>
+Data sorted by year → month → day for easy historical tracking.</p>
+</li>
+</ul>
+<hr>
+<h2 id="🚀-getting-started">🚀 Getting Started</h2>
+<h3 id="installation">Installation</h3>
+<ol>
+<li>
+<p>Clone repository:</p>
+<p>bash</p>
+<p>Copy</p>
+<p>git clone <a href="https://github.com/yourusername/fragrance-organizer.git">https://github.com/yourusername/fragrance-organizer.git</a></p>
+</li>
+<li>
+<p>Install requirements:</p>
+<p>bash</p>
+<p>Copy</p>
+<p>pip install json os</p>
+</li>
+</ol>
+<h3 id="basic-usage">Basic Usage</h3>
+<p>python</p>
+<p>Copy</p>
+<h1 id="add-a-fragrance">Add a fragrance</h1>
+<p>add_fragrance(“Winter Wonderland”, “2025”, “Winter”, “I Like This One”)</p>
+<h1 id="create-shopping-list">Create shopping list</h1>
+<p>create_shopping_list(“Holiday Gifts”)</p>
+<h1 id="add-item-to-list">Add item to list</h1>
+<p>add_to_shopping_list(“Holiday Gifts”, “Winter Wonderland”)</p>
+<hr>
+<h2 id="📂-data-structure">📂 Data Structure</h2>
+<p>JSON Field</p>
+<p>Description</p>
+<p>Example Values</p>
+<p><code>year</code></p>
+<p>Chronological tracking (2023-2025)</p>
+<p><code>2024</code>,  <code>2025</code></p>
+<p><code>season</code></p>
+<p>Seasonal categorization</p>
+<p><code>Winter</code>,  <code>Spring</code>,  <code>Summer</code>,  <code>Fall</code></p>
+<p><code>shopping_lists</code></p>
+<p>Custom lists with fragrance names</p>
+<p><code>Birthday</code>,  <code>Spring Favorites</code></p>
+<hr>
+<h2 id="🗂️-binder-system-vs.-digital-organizer">🗂️ Binder System vs. Digital Organizer</h2>
+<p>Binder System</p>
+<p>Digital Application</p>
+<p>Physical monthly tabs</p>
+<p>Auto-sorted calendar view</p>
+<p>Handwritten notes</p>
+<p>Searchable digital records</p>
+<p>Manual age calculations</p>
+<p><em>Planned: Automated birthday reminders</em></p>
+<p>Paper shopping lists</p>
+<p>Shareable lists with status tracking</p>
+<hr>
+<h2 id="📜-project-inspiration">📜 Project Inspiration</h2>
+<p>Digitizes a physical organization system using:</p>
+<ul>
+<li>
+<p><strong>Monthly sections</strong>  for tracking events</p>
+</li>
+<li>
+<p><strong>Pocket dividers</strong>  → Digital reminders/notes</p>
+</li>
+<li>
+<p><strong>Alphabetical lists</strong>  → Searchable contacts</p>
+</li>
+<li>
+<p><strong>Gift planning</strong>  → Smart shopping lists</p>
+</li>
+</ul>
+<hr>
+<h2 id="🛠️-future-enhancements">🛠️ Future Enhancements</h2>
+<ol>
+<li>
+<p>Birthday age calculator with Excel integration</p>
+</li>
+<li>
+<p>Email/SMS reminders for events</p>
+</li>
+<li>
+<p>Fragrance recommendation engine</p>
+</li>
+<li>
+<p>Multi-user collaboration</p>
+</li>
+</ol>
+<hr>
+<p><em>Created with ❤️ by [Your Name] –  <a href="https://github.com/yourusername/fragrance-organizer">Contribute</a></em><br>
+<em>License: MIT</em></p>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VS_md</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><p>Khristin Schenk<br>
+Feb 09th, 2025<br>
+SDEV-220: Module 3 Final Project Launch</p>
+<h1 id="module-3-final-project-launch-python-program-for-bath--body-works">Module 3 Final Project Launch: <em>Python Program for Bath &amp; Body Works</em></h1>
+<h3 id="introduction">Introduction</h3>
+<p>This Python code is designed to manage information about fragrances and collections from Bath &amp; Body Works. It offers a basic framework for organizing fragrance data, creating lists, and setting reminders. I plan to expand the program based on user feedback, new ideas, and any additional requirements that may come up.</p>
+<hr>
+<!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#module-3-final-project-launch-python-program-for-bath--body-works">Module 3 Final Project Launch: <em>Python Program for Bath &amp; Body Works</em></a>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#1-setup-the-project-structure"><strong>1. Setup the Project Structure</strong></a></li>
+<li><a href="#2-install-required-libraries"><strong>2. Install Required Libraries</strong></a></li>
+<li><a href="#3-implement-core-features"><strong>3. Implement Core Features</strong></a>
+<ul>
+<li><a href="#32-seasonal-organization"><strong>3.2 Seasonal Organization</strong></a></li>
+<li><a href="#33-shopping-list-integration"><strong>3.3 Shopping List Integration</strong></a></li>
+<li><a href="#34-reminder-system"><strong>3.4 Reminder System</strong></a></li>
+<li><a href="#35-gift-list-organizer"><strong>3.5 Gift List Organizer</strong></a></li>
+<li><a href="#4-main-application-loop"><strong>4. Main Application Loop</strong></a></li>
+<li><a href="#5-enhancements"><strong>5. Enhancements</strong></a></li>
+<li><a href="#6-running-the-application"><strong>6. Running the Application</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /code_chunk_output -->
+<hr>
+<h2 id="setup-the-project-structure"><strong>1. Setup the Project Structure</strong></h2>
+<p>Create a project folder with the following structure:</p>
+<pre class=" language-plaintext"><code class="prism  language-plaintext">bath_body_works_app/
+│
+├── data/                  # Folder to store JSON files
+│   ├── fragrances.json    # Stores user's fragrance inventory
+│   ├── shopping_lists.json # Stores shopping lists
+│   └── events.json        # Stores events and reminders
+│
+├── main.py                # Main application script
+└── utils.py               # Utility functions (e.g., file handling)
+</code></pre>
+<hr>
+<h2 id="install-required-libraries"><strong>2. Install Required Libraries</strong></h2>
+<p>Ensure you have Python installed, and install the following libraries if needed:</p>
+<pre class=" language-bash"><code class="prism  language-bash">pip <span class="token function">install</span> json datetime
+</code></pre>
+<hr>
+<h2 id="implement-core-features"><strong>3. Implement Core Features</strong></h2>
+<pre><code>- &gt; TEXT HERE TEXT HERE TEXT HERE
+- &gt; TEXT HERE TEXT HERE TEXT HERE
+</code></pre>
+<p><strong>3.1 Fragrance Collection Management</strong></p>
+<p>Allow users to add fragrances to their inventory and categorize them by year and season.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">import</span> json
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+<span class="token comment"># File paths</span>
+FRAGRANCES_FILE <span class="token operator">=</span> <span class="token string">"data/fragrances.json"</span>
+SHOPPING_LISTS_FILE <span class="token operator">=</span> <span class="token string">"data/shopping_lists.json"</span>
+EVENTS_FILE <span class="token operator">=</span> <span class="token string">"data/events.json"</span>
+
+<span class="token comment"># Load data from JSON files</span>
+<span class="token keyword">def</span> <span class="token function">load_data</span><span class="token punctuation">(</span>file_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> FileNotFoundError<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment"># Save data to JSON files</span>
+<span class="token keyword">def</span> <span class="token function">save_data</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> file_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+        json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token builtin">file</span><span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Add a fragrance to the inventory</span>
+<span class="token keyword">def</span> <span class="token function">add_fragrance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter fragrance name: "</span><span class="token punctuation">)</span>
+    year <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter year (e.g., 2023): "</span><span class="token punctuation">)</span>
+    season <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter season (e.g., Winter, Spring, Summer, Fall): "</span><span class="token punctuation">)</span>
+    status <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter status (e.g., SHOPPING LIST, I Have Not Smelled, I Like This One): "</span><span class="token punctuation">)</span>
+
+    fragrance <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">"name"</span><span class="token punctuation">:</span> name<span class="token punctuation">,</span>
+        <span class="token string">"year"</span><span class="token punctuation">:</span> year<span class="token punctuation">,</span>
+        <span class="token string">"season"</span><span class="token punctuation">:</span> season<span class="token punctuation">,</span>
+        <span class="token string">"status"</span><span class="token punctuation">:</span> status
+    <span class="token punctuation">}</span>
+
+    fragrances <span class="token operator">=</span> load_data<span class="token punctuation">(</span>FRAGRANCES_FILE<span class="token punctuation">)</span>
+    fragrances<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> fragrance
+    save_data<span class="token punctuation">(</span>fragrances<span class="token punctuation">,</span> FRAGRANCES_FILE<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"Added '{name}' to your fragrance inventory!"</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<h4 id="seasonal-organization"><strong>3.2 Seasonal Organization</strong></h4>
+<p>Allow users to view fragrances by year and season.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">view_fragrances_by_season</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> season<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fragrances <span class="token operator">=</span> load_data<span class="token punctuation">(</span>FRAGRANCES_FILE<span class="token punctuation">)</span>
+    filtered_fragrances <span class="token operator">=</span> <span class="token punctuation">[</span>f <span class="token keyword">for</span> f <span class="token keyword">in</span> fragrances<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> f<span class="token punctuation">[</span><span class="token string">"year"</span><span class="token punctuation">]</span> <span class="token operator">==</span> year <span class="token operator">and</span> f<span class="token punctuation">[</span><span class="token string">"season"</span><span class="token punctuation">]</span> <span class="token operator">==</span> season<span class="token punctuation">]</span>
+
+    <span class="token keyword">if</span> filtered_fragrances<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"Fragrances for {season} {year}:"</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> fragrance <span class="token keyword">in</span> filtered_fragrances<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"- {fragrance['name']} ({fragrance['status']})"</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"No fragrances found for {season} {year}."</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<h4 id="shopping-list-integration"><strong>3.3 Shopping List Integration</strong></h4>
+<p>Allow users to create shopping lists for events like birthdays and holidays.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">create_shopping_list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    event_name <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter event name (e.g., Birthday, Christmas): "</span><span class="token punctuation">)</span>
+    date <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter date (YYYY-MM-DD): "</span><span class="token punctuation">)</span>
+    fragrances <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter fragrance names (comma-separated): "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span>
+
+    shopping_list <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">"event_name"</span><span class="token punctuation">:</span> event_name<span class="token punctuation">,</span>
+        <span class="token string">"date"</span><span class="token punctuation">:</span> date<span class="token punctuation">,</span>
+        <span class="token string">"fragrances"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>f<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> f <span class="token keyword">in</span> fragrances<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+
+    shopping_lists <span class="token operator">=</span> load_data<span class="token punctuation">(</span>SHOPPING_LISTS_FILE<span class="token punctuation">)</span>
+    shopping_lists<span class="token punctuation">[</span>event_name<span class="token punctuation">]</span> <span class="token operator">=</span> shopping_list
+    save_data<span class="token punctuation">(</span>shopping_lists<span class="token punctuation">,</span> SHOPPING_LISTS_FILE<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"Created shopping list for '{event_name}'!"</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<h4 id="reminder-system"><strong>3.4 Reminder System</strong></h4>
+<p>Implement a simple reminder system using Python’s <code>datetime</code> module.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">check_reminders</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    today <span class="token operator">=</span> datetime<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">"%Y-%m-%d"</span><span class="token punctuation">)</span>
+    shopping_lists <span class="token operator">=</span> load_data<span class="token punctuation">(</span>SHOPPING_LISTS_FILE<span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Today's reminders:"</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> event_name<span class="token punctuation">,</span> event_details <span class="token keyword">in</span> shopping_lists<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> event_details<span class="token punctuation">[</span><span class="token string">"date"</span><span class="token punctuation">]</span> <span class="token operator">==</span> today<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"- {event_name}: {', '.join(event_details['fragrances'])}"</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<h4 id="gift-list-organizer"><strong>3.5 Gift List Organizer</strong></h4>
+<p>Organize gifts by year, scent, collection, season, and event.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">view_gift_lists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fragrances <span class="token operator">=</span> load_data<span class="token punctuation">(</span>FRAGRANCES_FILE<span class="token punctuation">)</span>
+    shopping_lists <span class="token operator">=</span> load_data<span class="token punctuation">(</span>SHOPPING_LISTS_FILE<span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Gift Lists:"</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> event_name<span class="token punctuation">,</span> event_details <span class="token keyword">in</span> shopping_lists<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"\nEvent: {event_name} (Date: {event_details['date']})"</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> fragrance_name <span class="token keyword">in</span> event_details<span class="token punctuation">[</span><span class="token string">"fragrances"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            fragrance <span class="token operator">=</span> fragrances<span class="token punctuation">.</span>get<span class="token punctuation">(</span>fragrance_name<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"- {fragrance_name} ({fragrance.get('season', 'N/A')} {fragrance.get('year', 'N/A')})"</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<h3 id="main-application-loop"><strong>4. Main Application Loop</strong></h3>
+<p>Combine all features into a menu-driven application.</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\nBath &amp; Body Works Fragrance Tracker"</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"1. Add Fragrance"</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"2. View Fragrances by Season"</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"3. Create Shopping List"</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"4. Check Reminders"</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"5. View Gift Lists"</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"6. Exit"</span><span class="token punctuation">)</span>
+
+        choice <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter your choice: "</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> choice <span class="token operator">==</span> <span class="token string">"1"</span><span class="token punctuation">:</span>
+            add_fragrance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> choice <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">:</span>
+            year <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter year: "</span><span class="token punctuation">)</span>
+            season <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter season: "</span><span class="token punctuation">)</span>
+            view_fragrances_by_season<span class="token punctuation">(</span>year<span class="token punctuation">,</span> season<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> choice <span class="token operator">==</span> <span class="token string">"3"</span><span class="token punctuation">:</span>
+            create_shopping_list<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> choice <span class="token operator">==</span> <span class="token string">"4"</span><span class="token punctuation">:</span>
+            check_reminders<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> choice <span class="token operator">==</span> <span class="token string">"5"</span><span class="token punctuation">:</span>
+            view_gift_lists<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> choice <span class="token operator">==</span> <span class="token string">"6"</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Goodbye!"</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Invalid choice. Please try again."</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<h3 id="enhancements"><strong>5. Enhancements</strong></h3>
+<ul>
+<li><strong>Push Notifications</strong>: Use third-party APIs like Twilio for SMS or email reminders.</li>
+<li><strong>GUI</strong>: Use <code>tkinter</code> or <code>PyQt</code> for a graphical user interface.</li>
+<li><strong>Data Analysis</strong>: Add features to analyze spending or fragrance preferences over time.</li>
+</ul>
+<hr>
+<h3 id="running-the-application"><strong>6. Running the Application</strong></h3>
+<p>Run the <code>main.py</code> script to start the application:</p>
+<pre class=" language-bash"><code class="prism  language-bash">python main.py
+</code></pre>
+</div>
+</body>
+
+</html>

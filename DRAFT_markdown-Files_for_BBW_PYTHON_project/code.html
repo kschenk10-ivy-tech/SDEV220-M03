@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>code</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><p>A Python program for storing information about Bath &amp; Body Works fragrances and collections.</p>
+<h3 id="overview"><strong>Overview</strong></h3>
+<p>A Python application for organizing Bath &amp; Body Works fragrances. Users must be able to create shopping lists linked to birthdays, holidays, and special occasions, organizing saved fragrances by week, day, and year.</p>
+<h3 id="key-features"><strong>Key Features</strong></h3>
+<ul>
+<li>
+<p><strong>Fragrance Collection Management:</strong> Allows users to add fragrances to their personal inventory.</p>
+</li>
+<li>
+<p><strong>Seasonal Organization:</strong> Categorizes fragrances by year and season.</p>
+</li>
+<li>
+<p><strong>Shopping List Integration:</strong> Users can create lists for birthdays, holidays, and special events.</p>
+</li>
+<li>
+<p><strong>Status Labels:</strong> Assign labels such as “SHOPPING LIST,” “I Have Not Smelled,” “I Like This One,” etc.</p>
+</li>
+<li>
+<p><strong>Data Storage &amp; Retrieval:</strong> Saves and accesses lists using JSON files.</p>
+</li>
+<li>
+<p><strong>Data Organization:</strong> Structured based on Year and Month.</p>
+</li>
+<li>
+<p><strong>Calendar Function:</strong> For tracking events and birthdays.</p>
+</li>
+<li>
+<p><strong>Reminder System:</strong> Sends push notifications, emails, or texts.</p>
+</li>
+<li>
+<p><strong>Gift List Organizer:</strong> Sorts gifts by year, scent, collection, season, and event.</p>
+</li>
+</ul>
+<h2 id="how-to-run">How to Run</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>
+<p>Before starting, ensure you have the following installed:</p>
+</li>
+<li>
+<p>Python (version 3.6 or higher)</p>
+</li>
+<li>
+<p>A code editor (such as Visual Studio Code, PyCharm, or any text editor of your choice)</p>
+</li>
+<li>
+<p>Required Python libraries:</p>
+</li>
+<li>
+<p><code>.json</code> for data storage</p>
+</li>
+<li>
+<p><code>datetime</code> for handling dates</p>
+</li>
+<li>
+<p><code>tkinter</code> for creating a graphical user interface (GUI) (optional)</p>
+</li>
+<li>
+<p><code>schedule</code> for reminders (optional)</p>
+</li>
+</ul>
+<p>You can install additional libraries using pip, for example:</p>
+<pre class=" language-bash"><code class="prism  language-bash">pip <span class="token function">install</span> schedule
+</code></pre>
+<hr>
+<h3 id="step-1-project-structure">Step 1: Project Structure</h3>
+<p>Create a project directory with the following structure:</p>
+<pre class=" language-md"><code class="prism  language-md">fragrance_app/
+│
+├── main.py # Main application script
+├── fragrance.py # Module for handling fragrance data
+├── reminder.py # Module for reminders
+├── data/ # Directory for storing JSON files
+│ ├── fragrances.json
+│ └── shopping_lists.json
+└── README.md # Readme file for documentation
+</code></pre>
+<h3 id="step-2-setting-up-the-json-data-storage">Step 2: Setting Up the JSON Data Storage</h3>
+<ol>
+<li>
+<p>Create <code>fragrances.json</code> and <code>shopping_lists.json</code> in the <code>data/</code> directory.</p>
+</li>
+<li>
+<p>Initialize these files with empty JSON objects <code>{}</code> for easier handling later.</p>
+</li>
+</ol>
+<h3 id="step-3-implementing-the-fragrance-management">Step 3: Implementing the Fragrance Management</h3>
+<p>In <code>fragrance.py</code>, implement functions to:</p>
+<ul>
+<li>
+<p><strong>Add Fragrances</strong>: Functions to add fragrances to the personal inventory, including properties like name, scent, collection, and season.</p>
+</li>
+<li>
+<p><strong>Load and Save</strong>: Functions that load and save fragrance data using JSON.</p>
+</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">import</span> json
+<span class="token keyword">import</span> os
+
+DATA_FILE <span class="token operator">=</span> <span class="token string">'data/fragrances.json'</span>
+<span class="token keyword">def</span> <span class="token function">load_fragrances</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+<span class="token keyword">return</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">)</span>
+<span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">def</span> <span class="token function">save_fragrance</span><span class="token punctuation">(</span>fragrance_data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>DATA_FILE<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>fragrance_data<span class="token punctuation">,</span> <span class="token builtin">file</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">add_fragrance</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> scent<span class="token punctuation">,</span> collection<span class="token punctuation">,</span> season<span class="token punctuation">)</span><span class="token punctuation">:</span>
+fragrances <span class="token operator">=</span> load_fragrances<span class="token punctuation">(</span><span class="token punctuation">)</span>
+fragrances<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'scent'</span><span class="token punctuation">:</span> scent<span class="token punctuation">,</span> <span class="token string">'collection'</span><span class="token punctuation">:</span> collection<span class="token punctuation">,</span> <span class="token string">'season'</span><span class="token punctuation">:</span> season<span class="token punctuation">}</span>
+save_fragrance<span class="token punctuation">(</span>fragrances<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="step-4-shopping-list-management">Step 4: Shopping List Management</h3>
+<p>Extend <code>fragrance.py</code> to handle shopping lists:</p>
+<ul>
+<li>
+<p>Create functions to add shopping lists linked to specific events (birthdays, holidays).</p>
+</li>
+<li>
+<p>Implement functions for status labels.</p>
+</li>
+</ul>
+<h3 id="step-5-implementing-the-reminder-system">Step 5: Implementing the Reminder System</h3>
+<p>In <code>reminder.py</code>, implement a simple reminder system using <code>schedule</code>:</p>
+<ul>
+<li>
+<p>Function to send reminders for upcoming events.</p>
+</li>
+<li>
+<p>Integration with an email client or SMS API if needed.</p>
+</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">import</span> schedule
+<span class="token keyword">import</span> time
+<span class="token keyword">def</span> <span class="token function">remind_for_event</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"Reminder: Don't forget the {event}!"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">schedule_reminder</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">:</span>
+schedule<span class="token punctuation">.</span>every<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>day<span class="token punctuation">.</span>at<span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">.</span>do<span class="token punctuation">(</span>remind_for_event<span class="token punctuation">,</span> event<span class="token punctuation">)</span>
+
+<span class="token comment"># Keep scheduler running</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+schedule<span class="token punctuation">.</span>run_pending<span class="token punctuation">(</span><span class="token punctuation">)</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="step-6-creating-the-user-interface">Step 6: Creating the User Interface</h3>
+<p>In <code>main.py</code>, create a basic user interface using <code>tkinter</code> (optional):</p>
+<ul>
+<li>
+<p>Create forms for adding fragrances and shopping lists.</p>
+</li>
+<li>
+<p>Display a calendar for tracking events.</p>
+</li>
+</ul>
+<pre class=" language-python"><code class="prism  language-python">
+<span class="token keyword">import</span> tkinter <span class="token keyword">as</span> tk
+<span class="token keyword">from</span> fragrance <span class="token keyword">import</span> add_fragrance
+<span class="token keyword">def</span> <span class="token function">add_fragrance_gui</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token comment"># Implementation of GUI for adding a fragrance</span>
+<span class="token keyword">pass</span> <span class="token comment"># Create your form here</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+root <span class="token operator">=</span> tk<span class="token punctuation">.</span>Tk<span class="token punctuation">(</span><span class="token punctuation">)</span>
+root<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"Fragrance Organizer"</span><span class="token punctuation">)</span>
+<span class="token comment"># Add your GUI components here</span>
+root<span class="token punctuation">.</span>mainloop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="step-7-implementing-the-calendar-functionality">Step 7: Implementing the Calendar Functionality</h3>
+<p>Use a library like <code>tkcalendar</code> or create a simple view with <code>tkinter</code> for displaying and interacting with dates.</p>
+<h3 id="step-8-testing-the-application">Step 8: Testing the Application</h3>
+<ul>
+<li>
+<p>Test each feature thoroughly to ensure everything works as planned.</p>
+</li>
+<li>
+<p>Handle exceptions and validate user inputs.</p>
+</li>
+</ul>
+<h3 id="step-9-documentation">Step 9: Documentation</h3>
+<ul>
+<li>Create a <code>README.md</code> file to document how to run the application and its features.</li>
+</ul>
+<h3 id="running-the-application">Running the Application</h3>
+<p>To run the application, execute the <code>main.py</code> script:</p>
+<pre class=" language-bash"><code class="prism  language-bash">python main.py
+</code></pre>
+<h3 id="conclusion">Conclusion</h3>
+<p>😊 Happy coding!</p>
+</div>
+</body>
+
+</html>

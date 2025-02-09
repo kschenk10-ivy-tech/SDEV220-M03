@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>again</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="python-application-proposal-bath--body-works-candle-tracker"><strong>Python Application Proposal: Bath &amp; Body Works Candle Tracker</strong></h1>
+<h3 id="application-overview"><strong>Application Overview</strong></h3>
+<p>This Python application is designed for Bath &amp; Body Works customers to log, track, and organize their favorite fragrances by year, season, and special occasions. Users can create personalized shopping lists linked to birthdays, holidays, and events. The application will feature a  <strong>command-line interface (CLI)</strong>  with a focus on simplicity and functionality. It will allow users to manage their candle collections, set reminders, and organize data efficiently.</p>
+<hr>
+<h3 id="core-functionalities"><strong>Core Functionalities</strong></h3>
+<ol>
+<li>
+<p><strong>Candle Collection Management</strong>:</p>
+<ul>
+<li>
+<p>Add, update, or remove candles from a personal collection.</p>
+</li>
+<li>
+<p>Organize candles by year, season, and scent.</p>
+</li>
+<li>
+<p>Assign statuses to candles (e.g., “SHOPPING LIST,” “I Have Not Smelled,” “I Like This One”).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Shopping List Creation</strong>:</p>
+<ul>
+<li>
+<p>Create and manage shopping lists for birthdays, holidays, and special occasions.</p>
+</li>
+<li>
+<p>Organize shopping lists by week, day, and year.</p>
+</li>
+<li>
+<p>Save and retrieve shopping lists using JSON files.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Organization</strong>:</p>
+<ul>
+<li>
+<p>Organize data by year and month (e.g., 2025 → JANUARY → Day 01).</p>
+</li>
+<li>
+<p>Include user details such as name (last, first), month, day, and year.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Birthday Computation</strong>:</p>
+<ul>
+<li>
+<p>Calculate age and days until the next birthday using formulas.</p>
+</li>
+<li>
+<p>Display age and birthday reminders for each user.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>User Prompts</strong>:</p>
+<ul>
+<li>
+<p>Create, edit, or view shopping lists.</p>
+</li>
+<li>
+<p>Open saved lists by year (dropdown-style selection).</p>
+</li>
+<li>
+<p>Confirm updates and prompt users to save changes before exiting.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Notifications</strong>:</p>
+<ul>
+<li>Send reminders via email or phone for upcoming birthdays or events.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="system-architecture"><strong>System Architecture</strong></h3>
+<p>The application will be built using  <strong>object-oriented programming (OOP)</strong>  principles and will include the following components:</p>
+<h4 id="classes"><strong>Classes</strong></h4>
+<ol>
+<li>
+<p><strong><code>Candle</code></strong>:</p>
+<ul>
+<li>
+<p>Attributes:  <code>name</code>,  <code>scent</code>,  <code>season</code>,  <code>year</code>,  <code>status</code>  (e.g., “SHOPPING LIST,” “I Like This One”).</p>
+</li>
+<li>
+<p>Methods:  <code>update_status()</code>,  <code>display_details()</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>User</code></strong>:</p>
+<ul>
+<li>
+<p>Attributes:  <code>first_name</code>,  <code>last_name</code>,  <code>birthday</code>  (month, day, year).</p>
+</li>
+<li>
+<p>Methods:  <code>calculate_age()</code>,  <code>days_until_birthday()</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>ShoppingList</code></strong>:</p>
+<ul>
+<li>
+<p>Attributes:  <code>year</code>,  <code>month</code>,  <code>day</code>,  <code>candles</code>  (list of  <code>Candle</code>  objects).</p>
+</li>
+<li>
+<p>Methods:  <code>add_candle()</code>,  <code>remove_candle()</code>,  <code>save_to_file()</code>,  <code>load_from_file()</code>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="data-management"><strong>Data Management</strong></h4>
+<ul>
+<li>
+<p>Data will be stored in  <strong>JSON files</strong>  for persistence.</p>
+</li>
+<li>
+<p>Example JSON structure:</p>
+<p>json</p>
+<p>Copy</p>
+<p>{<br>
+“2025”: {<br>
+“JANUARY”: {<br>
+“01”: {<br>
+“name”: “Doe, John”,<br>
+“age”: 30,<br>
+“candles”: [<br>
+{“name”: “Vanilla Bean”, “scent”: “Vanilla”, “status”: “SHOPPING LIST”},<br>
+{“name”: “Fresh Linen”, “scent”: “Clean”, “status”: “I Like This One”}<br>
+]<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</li>
+</ul>
+<hr>
+<h3 id="user-interaction-flow"><strong>User Interaction Flow</strong></h3>
+<ol>
+<li>
+<p><strong>Main Menu</strong>:</p>
+<ul>
+<li>
+<p>Options: Create Shopping List, Open Shopping List, Edit Shopping List, Exit.</p>
+</li>
+<li>
+<p>Example:</p>
+<p>Copy</p>
+<p>Welcome to Bath &amp; Body Works Candle Tracker!</p>
+<ol>
+<li>Create Shopping List</li>
+<li>Open Shopping List</li>
+<li>Edit Shopping List</li>
+<li>Exit</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Create Shopping List</strong>:</p>
+<ul>
+<li>
+<p>Prompt user for year, month, day, and candle details.</p>
+</li>
+<li>
+<p>Save the list to a JSON file.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Open Shopping List</strong>:</p>
+<ul>
+<li>
+<p>Display available years and months.</p>
+</li>
+<li>
+<p>Allow users to select a list to view or edit.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Edit Shopping List</strong>:</p>
+<ul>
+<li>
+<p>Add, remove, or update candles.</p>
+</li>
+<li>
+<p>Assign statuses to candles.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Exit</strong>:</p>
+<ul>
+<li>Prompt users to save changes before exiting.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="technical-requirements"><strong>Technical Requirements</strong></h3>
+<ol>
+<li>
+<p><strong>Programming Language</strong>: Python 3.x.</p>
+</li>
+<li>
+<p><strong>Libraries</strong>:</p>
+<ul>
+<li>
+<p><code>json</code>  for data storage and retrieval.</p>
+</li>
+<li>
+<p><code>datetime</code>  for birthday computations.</p>
+</li>
+<li>
+<p><code>smtplib</code>  for email notifications (optional).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Structures</strong>:</p>
+<ul>
+<li>Lists, dictionaries, and tuples for organizing data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling</strong>:</p>
+<ul>
+<li>
+<p>Ensure the program runs without syntax or runtime errors.</p>
+</li>
+<li>
+<p>Validate user inputs (e.g., dates, names).</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="sample-output"><strong>Sample Output</strong></h3>
+<h4 id="main-menu"><strong>Main Menu</strong></h4>
+<p>Copy</p>
+<p>Welcome to Bath &amp; Body Works Candle Tracker!</p>
+<ol>
+<li>Create Shopping List</li>
+<li>Open Shopping List</li>
+<li>Edit Shopping List</li>
+<li>Exit<br>
+Enter your choice: 1</li>
+</ol>
+<h4 id="create-shopping-list"><strong>Create Shopping List</strong></h4>
+<p>Copy</p>
+<p>Enter year: 2025<br>
+Enter month: JANUARY<br>
+Enter day: 01<br>
+Enter name (Last, First): Doe, John<br>
+Enter candle name: Vanilla Bean<br>
+Enter scent: Vanilla<br>
+Assign status (SHOPPING LIST, I Like This One, etc.): SHOPPING LIST<br>
+Candle added successfully!</p>
+<h4 id="open-shopping-list"><strong>Open Shopping List</strong></h4>
+<p>Copy</p>
+<p>Available years: 2025<br>
+Enter year: 2025<br>
+Available months: JANUARY<br>
+Enter month: JANUARY<br>
+Day 01:</p>
+<ul>
+<li>Name: Doe, John</li>
+<li>Age: 30</li>
+<li>Candles:
+<ol>
+<li>Vanilla Bean (Vanilla) - SHOPPING LIST</li>
+<li>Fresh Linen (Clean) - I Like This One</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="documentation"><strong>Documentation</strong></h3>
+<ol>
+<li>
+<p><strong>Proposal</strong>: Detailed description of the application and its functionalities.</p>
+</li>
+<li>
+<p><strong>Class Diagram</strong>: Visual representation of classes and their relationships.</p>
+</li>
+<li>
+<p><strong>Report</strong>: Sample outputs and test cases demonstrating the application’s functionality.</p>
+</li>
+</ol>
+<hr>
+<h3 id="inspiration"><strong>Inspiration</strong></h3>
+<p>The application is inspired by a 3-inch binder system used to organize greeting cards, photos, and personal items by month and year. It combines elements of a calendar, reminder service, and gift list organizer, tailored for Bath &amp; Body Works customers.</p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+</div>
+</body>
+
+</html>
