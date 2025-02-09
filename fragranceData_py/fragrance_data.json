@@ -1,0 +1,79 @@
+{
+    "fragrances": {
+        "2025": {
+            "Spring": {
+                "4EVER SWEEET": "Not Smelled",
+                "Almond Croissant": "Wishlist",
+                "A Thousand Wishes": "I Like This One",
+                "Backyard Honeysuckle": "Favorite",
+                "Bergamot & Birch": "Not Smelled",
+                "Blue Orchard Skies": "I Like This One",
+                "Blue Sky Haze": "Not Smelled",
+                "Blush Amber & Peony": "Wishlist",
+                "Book Loft": "Favorite",
+                "Champagne Toast": "I Like This One",
+                "Endless Weekend": "Not Smelled",
+                "Eucalyptus Rain": "Wishlist",
+                "Fiji White Sands": "I Like This One",
+                "First Date": "Favorite",
+                "Flowerchild": "Not Smelled",
+                "Fresh Cut Lilacs": "I Like This One",
+                "Garden Weather": "Wishlist",
+                "Hummingbird Tea Cake": "Favorite",
+                "Mahogany Coconut": "Not Smelled",
+                "Mahogany Vanilla": "Wishlist",
+                "Main Street Bakery": "I Like This One",
+                "Palo Santo & Sage": "Favorite",
+                "Paris Café": "Wishlist",
+                "Pink Lavender & Espresso": "Not Smelled",
+                "Pistachio Milk & Honey": "I Like This One",
+                "Raspberries & Whipped Vanilla": "Favorite",
+                "Self Care Sunday": "Wishlist",
+                "Springtime In Paris": "Not Smelled",
+                "Strawberry Pound Cake": "I Like This One",
+                "Sugared Jasmine": "Favorite",
+                "Summer Rain": "Wishlist",
+                "Sunkissed Morning": "Not Smelled",
+                "Sunset In Maui": "I Like This One",
+                "Sunwashed Santal": "Favorite",
+                "Sweet Orange & Agave": "Not Smelled",
+                "Vanilla Cloud": "Wishlist",
+                "White Iris & Cedarwood": "I Like This One",
+                "White Tea & Sage": "Favorite"
+            }
+        }
+    },
+    "shopping_lists": {
+        "Birthday": [
+            "Book Loft",
+            "First Date",
+            "Hummingbird Tea Cake",
+            "Palo Santo & Sage",
+            "Raspberries & Whipped Vanilla",
+            "Sugared Jasmine",
+            "Sunwashed Santal",
+            "White Tea & Sage"
+        ],
+        "Wishlist": [
+            "Almond Croissant",
+            "Blush Amber & Peony",
+            "Eucalyptus Rain",
+            "Garden Weather",
+            "Mahogany Vanilla",
+            "Paris Café",
+            "Self Care Sunday",
+            "Summer Rain",
+            "Vanilla Cloud"
+        ],
+        "Spring Favorites": [
+            "Backyard Honeysuckle",
+            "First Date",
+            "Hummingbird Tea Cake",
+            "Palo Santo & Sage",
+            "Raspberries & Whipped Vanilla",
+            "Sugared Jasmine",
+            "Sunwashed Santal",
+            "White Tea & Sage"
+        ]
+    }
+}
